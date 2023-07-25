@@ -3,14 +3,14 @@ import argparse
 import os
 
 def extract_text_from_pdf(pdf_path):
-    pdf_path = 'pdf/' + pdf_path
+    os.chdir('pdf')
     with open(pdf_path, "rb") as pdf_file:
         pdf_reader = PyPDF2.PdfReader(pdf_file)
         original_text = ""
         for page_num in range(len(pdf_reader.pages)):
             original_text += pdf_reader.pages[page_num].extract_text()
     text = original_text.replace("\n", "")
-
+    os.chdir('..')
     return text
 
 def main():
