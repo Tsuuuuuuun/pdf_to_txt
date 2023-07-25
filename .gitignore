@@ -1,4 +1,4 @@
-/pdf
+/pdf*
 !/pdf.example.pdf
-/txt
+/txt*
 !/txt.example.txt
