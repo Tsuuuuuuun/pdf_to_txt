@@ -1,7 +1,9 @@
 import PyPDF2
 import argparse
+import os
 
 def extract_text_from_pdf(pdf_path):
+    pdf_path = 'pdf/' + pdf_path
     with open(pdf_path, "rb") as pdf_file:
         pdf_reader = PyPDF2.PdfReader(pdf_file)
         original_text = ""
@@ -18,9 +20,10 @@ def main():
 
     extracted_text = extract_text_from_pdf(args.pdf_path)
     output_filename = args.pdf_path.rsplit('.', 1)[0] + ".txt"
+    os.chdir('txt')
     with open(output_filename, "w", encoding="utf-8") as txt_file:
         txt_file.write(extracted_text)
-    
+    os.chdir('..')
     print(f"Text saved in '{output_filename}'")
 
 if __name__ == "__main__":
